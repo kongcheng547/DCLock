@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#161824"
+    tools:context=".MainActivity">
+
+    <!--底部导航栏-->
+    <FrameLayout
+        android:id="@+id/fragment_container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white"
+        android:layout_above="@+id/rg">
+    </FrameLayout>
+
+    <RadioGroup
+        android:id="@+id/rg"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:layout_alignParentBottom="true"
+        android:background="@color/white"
+        android:orientation="horizontal"
+        >
+        <RadioButton
+            android:id="@+id/suoji_tab"
+            style="@style/Custom.TabRadioButton"
+            android:checked="true"
+            android:text="锁机" />
+        <RadioButton
+            android:id="@+id/naozhong_tab"
+            style="@style/Custom.TabRadioButton"
+            android:text="闹钟" />
+
+        <RadioButton
+            android:id="@+id/shuju_tab"
+            style="@style/Custom.TabRadioButton"
+            android:text="数据" />
+        <RadioButton
+            android:id="@+id/wode_tab"
+            style="@style/Custom.TabRadioButton"
+            android:text="我的" />
+
+    </RadioGroup>
+
+</RelativeLayout>
