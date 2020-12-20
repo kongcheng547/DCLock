@@ -5,10 +5,14 @@ import androidx.fragment.app.Fragment;
 
 import android.app.StatusBarManager;
 import android.content.Intent;
+import android.graphics.Color;
+import android.os.Build;
 import android.os.Bundle;
 import android.service.notification.StatusBarNotification;
 import android.util.SparseArray;
+import android.view.View;
 import android.view.Window;
+import android.view.WindowManager;
 import android.widget.RadioGroup;
 
 import com.example.dclock.shouye_fragment.Clock_Main;
@@ -18,32 +22,28 @@ import com.example.dclock.shouye_fragment.Mine_Main;
 
 public class MainActivity extends AppCompatActivity {
 
-    private RadioGroup mTabRadioGroup;
     private SparseArray<Fragment> mFragmentSparseArray;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-        //这里注意下 因为在评论区发现有网友调用setRootViewFitsSystemWindows 里面 winContent.getChildCount()=0 导致代码无法继续
-        //是因为你需要在setContentView之后才可以调用 setRootViewFitsSystemWindows
-
-        //当FitsSystemWindows设置 true 时，会在屏幕最上方预留出状态栏高度的 padding
-        StatusBarUtil.setRootViewFitsSystemWindows(this,true);
-        //设置状态栏透明
-        StatusBarUtil.setTranslucentStatus(this);
-        //一般的手机的状态栏文字和图标都是白色的, 可如果你的应用也是纯白色的, 或导致状态栏文字看不清
-        //所以如果你是这种情况,请使用以下代码, 设置状态使用深色文字图标风格, 否则你可以选择性注释掉这个if内容
-        if (!StatusBarUtil.setStatusBarDarkTheme(this, true)) {
-            //如果不支持设置深色风格 为了兼容总不能让状态栏白白的看不清, 于是设置一个状态栏颜色为半透明,
-            //这样半透明+白=灰, 状态栏的文字能看得清
-            StatusBarUtil.setStatusBarColor(this,0x55000000);
+        getWindow().requestFeature(Window.FEATURE_NO_TITLE);
+        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            Window window = getWindow();
+            window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS
+                    | WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION);
+            window.getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_STABLE);
+            //| View.SYSTEM_UI_FLAG_LAYOUT_STABLE
+            window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+            window.setStatusBarColor(Color.GRAY);
+            window.setNavigationBarColor(Color.TRANSPARENT);
         }
+        setContentView(R.layout.activity_main);
         initRatioGroup();
     }
     private void initRatioGroup(){
         //this.requestWindowFeature(Window.FEATURE_NO_TITLE);
-        mTabRadioGroup = findViewById(R.id.rg);
+        RadioGroup mTabRadioGroup = findViewById(R.id.rg);
         mFragmentSparseArray = new SparseArray<>();
         mFragmentSparseArray.append(R.id.suoji_tab, DClock_Main.newInstance("锁机"));
         mFragmentSparseArray.append(R.id.naozhong_tab, Clock_Main.newInstance("搜索"));

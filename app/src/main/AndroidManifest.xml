@@ -4,7 +4,6 @@
     package="com.example.dclock">
     <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
     <uses-permission android:name="android.permission.INTERNET" />
-
     <uses-permission android:name="android.permission.REORDER_TASKS" />
     <application
         android:allowBackup="true"
@@ -20,7 +19,11 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <service android:name=".LockPhone"/>
+        <service android:name=".LockPhone">
+            <intent-filter>
+                <action android:name="ITOP.MOBILE.SIMPLE.SERVICE.SENSORSERVICE"/>
+            </intent-filter>
+        </service>
         <activity android:name=".shouye_fragment.forStartService"/>
     </application>
 

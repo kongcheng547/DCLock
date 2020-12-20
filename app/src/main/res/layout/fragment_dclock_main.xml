@@ -1,30 +1,129 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:tools="http://schemas.android.com/tools"
     tools:context=".shouye_fragment.DClock_Main"
+    android:layout_gravity="center_vertical"
     >
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:background="@color/teal_200">
+        >
         <TextView
             android:layout_width="wrap_content"
-            android:layout_height="50dp"
-            android:text="   锁机"
+            android:layout_height="wrap_content"
+            android:text="@string/suojiTitle"
             android:textSize="20sp"
-            android:gravity="center_vertical"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
             />
+
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="17dp"
+            android:background="@color/white"
+            android:src="@drawable/help"
+            android:layout_centerVertical="true"
+            android:id="@+id/helplcok"
+            />
+
     </RelativeLayout>
 
+    <TableLayout
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:layout_marginTop="60dp"
+        android:background="@drawable/roundrec"
+        android:shrinkColumns="3"
+        >
+        <TextView
+            android:text="@string/chooseLockTime"
+            android:textColor="@color/white"
+            android:layout_height="40dp"
+            android:textAlignment="center"
+            app:drawableTopCompat="@drawable/locknow" />
+        <TableRow tools:ignore="UselessParent"
+            android:layout_width="match_parent"
+            >
+            <Button
+                android:id="@+id/lock1min"
+                android:layout_height="50dp"
+                android:background="@null"
+                android:text="@string/m1min"
+                android:textColor="@color/white"
+                tools:ignore="ButtonStyle"
+                />
+            <Button
+                android:id="@+id/lock10min"
+                android:text="@string/m10min"
+                android:textColor="@color/white"
+                android:background="@null"
+                tools:ignore="ButtonStyle"
+                />
+            <Button
+                android:id="@+id/lock30min"
+                android:text="@string/m30min"
+                android:textColor="@color/white"
+                android:background="@null"
+                tools:ignore="ButtonStyle"
+                />
+            <Button
+                android:id="@+id/lock1h"
+                android:text="@string/h1h"
+                android:textColor="@color/white"
+                android:background="@null"
+                tools:ignore="ButtonStyle"
+                />
+            <Button
+                android:id="@+id/lockfor"
+                android:background="@null"
+                android:text="@string/lockforself"
+                android:textColor="@color/white"
+                tools:ignore="ButtonStyle"
+                />
+        </TableRow>
+    </TableLayout>
     <Button
-        android:layout_width="60dp"
-        android:layout_height="80dp"
-        android:layout_gravity="center_vertical"
-        android:text="锁机"
-        android:id="@+id/lock1min"
+        android:drawableTop="@drawable/plus"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:layout_marginTop="170dp"
+        android:background="@drawable/blueroundrec"
+        android:id="@+id/lockontime"
+        android:text="@string/lockontime1"
+        android:textColor="@color/white"
+        android:textSize="18sp"
         />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:layout_marginTop="400dp"
+        android:layout_gravity="center_horizontal">
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:src="@drawable/iceman"
+            android:id="@+id/lockfortime"
+            android:layout_centerHorizontal="true"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:text="选取你的定时锁机时间\n让你不再熬到深夜水手机！"
+            android:textAlignment="center"
+            android:textSize="18sp"
+            android:layout_below="@id/lockfortime"
+            />
+
+    </RelativeLayout>
+
 
 </FrameLayout>

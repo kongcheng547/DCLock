@@ -1,3 +1,12 @@
 <resources>
     <string name="app_name">DClock</string>
+    <string name="suojiTitle">锁机</string>
+    <string name="chooseLockTime">选择锁机时间</string>
+    <string name="m1min">1min</string>
+    <string name="m10min">10min</string>
+    <string name="m30min">30min</string>
+    <string name="h1h">1h</string>
+    <string name="lockforself">自定义</string>
+    <string name="lockontime">定时锁机</string>
+    <string name="lockontime1">选取定时锁机时间</string>
 </resources>
