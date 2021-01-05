@@ -3,11 +3,11 @@
     android:shape="rectangle">
     <!-- 内部颜色 -->
     <solid
-        android:color="@color/top_bar_normal_bg" />
+        android:color="@color/steelblue" />
     <!-- 边缘线条颜色 -->
     <stroke
         android:width="1dp"
-        android:color="@color/top_bar_normal_bg" />
+        android:color="@color/steelblue" />
     <!-- 圆角的幅度 -->
     <corners
         android:topLeftRadius="20dip"

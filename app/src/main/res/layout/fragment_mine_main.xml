@@ -1,20 +1,245 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout
+<LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:tools="http://schemas.android.com/tools"
     tools:context=".shouye_fragment.Mine_Main"
-
+    android:background="@color/white"
+    android:orientation="vertical"
     >
 
-    <TextView
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:background="@color/cornflowerblue"
+        >
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:textAlignment="center"
+            android:text="我的"
+            android:textSize="25sp"
+            android:layout_centerInParent="true"
+            android:textStyle="bold"
+            android:textColor="@color/tv_Black"
+            />
+
+    </RelativeLayout>
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textAlignment="center"
-        android:text="我的"
-        android:gravity="center_horizontal"
-        android:layout_gravity="center"
-        />
+        android:orientation="vertical"
+        android:background="@drawable/minebackgroundzhu"
+        >
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:background="@drawable/minebackgroundcong"
+        >
 
-</FrameLayout>
+        <ImageButton
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:id="@+id/headImg"
+            android:src="@drawable/headimg"
+            android:layout_marginStart="20dp"
+            android:background="@null"
+            android:layout_marginTop="50dp"
+            />
+        <LinearLayout
+            android:layout_marginStart="20dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toEndOf="@id/headImg"
+            android:orientation="vertical"
+            >
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="空城"
+                android:textColor="@color/white"
+                android:textSize="25sp"
+                android:layout_marginTop="70dp"
+                android:id="@+id/nicheng"
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="ID:88888888"
+                android:textColor="@color/white"
+                />
+        </LinearLayout>
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_marginEnd="10dp"
+                android:layout_marginTop="20dp"
+                android:orientation="vertical"
+                >
+            <TextView
+                android:layout_width="70dp"
+                android:layout_height="wrap_content"
+                android:background="@drawable/blueroundrec"
+                android:text="自律达人"
+                android:textAlignment="center"
+                android:textColor="@color/black"
+                android:textStyle="bold"
+                />
+                <TextView
+                    android:layout_width="80dp"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/blueroundrec"
+                    android:text="起床困难户"
+                    android:textAlignment="center"
+                    android:textColor="@color/black"
+                    android:textStyle="bold"
+                    android:layout_marginTop="10dp"
+                    />
+            </LinearLayout>
+    </RelativeLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginTop="10dp"
+            >
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+
+                >
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/gongzuotai"
+                    android:layout_gravity="center"
+                    />
+                <Button
+                    android:layout_gravity="center"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@null"
+                    android:text="修改资料"
+                    android:id="@+id/changeInfo"
+                    android:textAlignment="textStart"
+                    android:textSize="16sp"
+                    tools:ignore="RtlCompat"
+                    android:layout_marginStart="10dp"
+                    />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+
+                >
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/xitongzhushou"
+                    android:layout_gravity="center"
+                    />
+                <Button
+                    android:layout_marginStart="10dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@null"
+                    android:id="@+id/changeSaid"
+                    android:text="修改座右铭"
+                    android:textAlignment="viewStart"
+                    android:textSize="16sp"
+                    />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+
+                >
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/shenhe"
+                    android:layout_gravity="center"
+                    />
+                <Button
+                    android:layout_marginStart="10dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@null"
+                    android:id="@+id/changeBackground"
+                    android:text="修改锁机背景"
+                    android:textAlignment="viewStart"
+                    android:textSize="16sp"
+                    />
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                >
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/shipinghuiyi"
+                    android:layout_gravity="center"
+                    />
+                <Button
+                    android:layout_marginStart="10dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@null"
+                    android:text="帮助"
+                    android:id="@+id/mine_help"
+                    android:textAlignment="viewStart"
+                    android:textSize="16sp"
+                    />
+            </LinearLayout>
+
+        </LinearLayout>
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="180dp"
+            android:layout_marginTop="40dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:text="\@关于"
+                android:id="@+id/guanyu"
+                android:textColor="@color/lightcoral"
+                android:textSize="30sp" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/guanyu"
+                android:text="\@DC\n@kongcheng\nV1.0"
+                android:textColor="@color/darksalmon"
+                android:layout_centerHorizontal="true"
+                android:textSize="15sp"
+                android:textAlignment="center"
+                />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="1000dp"
+            />
+
+    </LinearLayout>
+
+</LinearLayout>

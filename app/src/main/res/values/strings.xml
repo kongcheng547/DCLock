@@ -9,4 +9,6 @@
     <string name="lockforself">自定义</string>
     <string name="lockontime">定时锁机</string>
     <string name="lockontime1">选取定时锁机时间</string>
+    <string name="todo">TODO</string>
+    <string name="chooseMusic">选择白噪声</string>
 </resources>

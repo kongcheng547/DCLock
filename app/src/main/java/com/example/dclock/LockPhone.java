@@ -6,6 +6,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.PixelFormat;
+import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.os.Handler;
 import android.os.IBinder;
@@ -34,6 +35,8 @@ public class LockPhone extends Service {
     public static boolean isStarted = false;
     public View view;
     public int lockTime;
+    public boolean nextTimeIsSet=false;
+    public Context context=this;
 
     public static String[] CN_CHARS = new String[] { "日", "一", "二", "三", "四",
             "五", "六"};
@@ -41,6 +44,11 @@ public class LockPhone extends Service {
     private WindowManager.LayoutParams layoutParams;
 
     private Button switchMusicButton;
+    private boolean isPlaying=false;
+    private Intent playIntent;
+    @SuppressLint("UseCompatLoadingForDrawables")
+    public static int background=R.drawable.floatingwindowbackground1;
+    public static String saidText="你一定不会平凡";
 
     private Handler handler = new Handler();
     TextView time_now,time_year,window_text,this_time;
@@ -54,6 +62,7 @@ public class LockPhone extends Service {
             handler.postDelayed(this, 1000);
         }
     };
+    @SuppressLint("UseCompatLoadingForDrawables")
     @Override
     public void onCreate() {
         super.onCreate();
@@ -77,16 +86,32 @@ public class LockPhone extends Service {
         time_now=view.findViewById(R.id.floating_window_time);
         time_year=view.findViewById(R.id.floating_window_year);
         window_text=view.findViewById(R.id.floating_window_text);
-        window_text.setText("你一定不会平凡");
+        window_text.setText(saidText);
         this_time=view.findViewById(R.id.floating_window_thistime);
         switchMusicButton=view.findViewById(R.id.floating_window_zaoButton);
         switchMusicButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //进行噪声选取
+                if(!isPlaying)
+                {
+                    startService(playIntent);
+                    Log.e("开始","播放音乐");
+                }
+                else
+                {
+                    //MyAudioService.stopPlay();
+                    MyAudioService.mediaplayer.stop();
+                    Log.e("停止","播放音乐");
+                }
+                isPlaying=!isPlaying;
             }
         });
+        view.setBackground(this.context.getDrawable(background));
         windowManager.addView(view,layoutParams);
+        playIntent=new Intent(context,MyAudioService.class);
+        if(isPlaying)
+            startService(playIntent);
+
     }
 
     @Nullable
@@ -108,7 +133,8 @@ public class LockPhone extends Service {
     @Override
     public void onDestroy() {
         windowManager.removeView(view);
-
+        MyAudioService.stopPlay();
+        stopService(playIntent);
         super.onDestroy();
     }
 
@@ -131,10 +157,14 @@ public class LockPhone extends Service {
         allTime=minute+lockTime;
         nextMin=allTime%60;
         nextH=hour+allTime/60;
-        @SuppressLint("DefaultLocale") String timeString = String.format("%02d:%02d:%02d", hour, minute, miao);
+        @SuppressLint("DefaultLocale") String timeString = String.format("%02d:%02d", hour, minute);
         @SuppressLint("DefaultLocale") String nextTimeString = String.format("本次锁机时间\n%02d:%02d--%02d:%02d", hour, minute, nextH,nextMin);
         time_now.setText(timeString);
-        this_time.setText(nextTimeString);
+        if(!nextTimeIsSet)
+        {
+            this_time.setText(nextTimeString);
+            nextTimeIsSet=true;
+        }
     }
 
 }

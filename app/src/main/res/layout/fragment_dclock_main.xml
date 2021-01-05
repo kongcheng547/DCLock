@@ -16,9 +16,11 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/suojiTitle"
-            android:textSize="20sp"
+            android:textSize="25sp"
             android:layout_centerHorizontal="true"
             android:layout_centerVertical="true"
+            android:textStyle="bold"
+            android:textColor="@color/tv_Black"
             />
 
         <ImageButton
@@ -100,6 +102,17 @@
         android:textSize="18sp"
         />
 
+    <Button
+        android:drawableTop="@drawable/music"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:layout_marginTop="250dp"
+        android:background="@drawable/greenroundrec"
+        android:id="@+id/chooseMusic"
+        android:text="@string/chooseMusic"
+        android:textColor="@color/white"
+        android:textSize="18sp"
+        />
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="150dp"
@@ -121,6 +134,7 @@
             android:textAlignment="center"
             android:textSize="18sp"
             android:layout_below="@id/lockfortime"
+            android:textColor="@color/tv_Black"
             />
 
     </RelativeLayout>

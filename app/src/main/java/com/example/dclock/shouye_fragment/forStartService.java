@@ -35,7 +35,7 @@ public class forStartService extends Activity {
             handler.postDelayed(this, 2000);
             handler.removeCallbacks(runnable);
             finish();
-            Toast.makeText(forStartService.this,"已结束"+lockTime+"分钟的锁机",Toast.LENGTH_LONG);
+            Toast.makeText(forStartService.this,"已结束"+lockTime+"分钟的锁机",Toast.LENGTH_LONG).show();
         }
     };
     @Override

@@ -7,9 +7,9 @@
     <uses-permission android:name="android.permission.REORDER_TASKS" />
     <application
         android:allowBackup="true"
-        android:icon="@drawable/checklist"
+        android:icon="@drawable/vdc"
         android:label="@string/app_name"
-        android:roundIcon="@drawable/checklist"
+        android:roundIcon="@drawable/vdc"
         android:supportsRtl="true"
         android:theme="@style/Theme.DClock"
         >
@@ -22,6 +22,12 @@
         <service android:name=".LockPhone">
             <intent-filter>
                 <action android:name="ITOP.MOBILE.SIMPLE.SERVICE.SENSORSERVICE"/>
+            </intent-filter>
+        </service>
+        <service android:name=".MyAudioService">
+            <intent-filter>
+                <action android:name="introduction.android.AudioServiceDemo.MY_AUDIO_SERVICE" />
+                <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </service>
         <activity android:name=".shouye_fragment.forStartService"/>

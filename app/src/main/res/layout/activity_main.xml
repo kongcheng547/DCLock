@@ -30,12 +30,14 @@
             style="@style/Custom.TabRadioButton"
             android:checked="true"
             android:text="锁机"
+            android:textColor="@color/tv_Black"
             android:drawableTop="@drawable/switch1"
             />
         <RadioButton
             android:id="@+id/naozhong_tab"
             style="@style/Custom.TabRadioButton"
             android:text="闹钟"
+            android:textColor="@color/tv_Black"
             android:drawableTop="@drawable/clock"
             />
 
@@ -43,12 +45,14 @@
             android:id="@+id/shuju_tab"
             style="@style/Custom.TabRadioButton"
             android:text="数据"
+            android:textColor="@color/tv_Black"
             android:drawableTop="@drawable/topsales"/>
         <RadioButton
             android:id="@+id/wode_tab"
             android:layout_height="wrap_content"
             style="@style/Custom.TabRadioButton"
             android:text="我的"
+            android:textColor="@color/tv_Black"
             android:drawableTop="@drawable/bussiness"
             />
 
