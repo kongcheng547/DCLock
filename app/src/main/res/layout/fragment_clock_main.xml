@@ -1,17 +1,38 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout
+<LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context=".shouye_fragment.Clock_Main">
+    tools:context=".shouye_fragment.Clock_Main"
+    android:orientation="vertical">
 
-    <TextView
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:background="@color/gainsboro"
+        >
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="闹钟"
+            android:textSize="25sp"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:textStyle="bold"
+            android:textColor="@color/tv_Black"
+            />
+    </RelativeLayout>
+
+    <ListView
+        android:id="@+id/alarm_list_view"
+        android:layout_width="match_parent"
+        android:layout_height="467dp" />
+
+    <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textAlignment="center"
-        android:text="闹钟"
-        android:gravity="center_horizontal"
-        android:layout_gravity="center"
-        />
-</FrameLayout>
+        android:layout_gravity="bottom"
+        android:text="添加闹钟"
+        android:id="@+id/add_alarm_button"/>
+</LinearLayout>

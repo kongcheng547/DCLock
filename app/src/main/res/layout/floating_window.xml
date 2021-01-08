@@ -1,31 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
     android:background="@drawable/floatingwindowbackground1"
-    >
+    android:orientation="vertical">
+
     <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
         android:id="@+id/floating_window_text"
-        android:layout_marginTop="40dp"
-        android:layout_gravity="center_horizontal"
-        android:text="测试"
-        android:textSize="35sp"
-        android:textColor="@color/white"
-        />
-    <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="40dp"
+        android:text="测试"
+        android:textColor="@color/white"
+        android:textSize="35sp" />
+
+    <TextView
         android:id="@+id/floating_window_time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="250dp"
-        android:textSize="40sp"
-        android:textColor="@color/white"
         android:text="21:09:59"
-        />
+        android:textColor="@color/white"
+        android:textSize="40sp" />
 
     <TextView
         android:id="@id/floating_window_year"
@@ -33,34 +31,35 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="10dp"
-        android:textColor="@color/white"
         android:text="2020-12-14 星期一"
+        android:textColor="@color/white"
         android:textSize="20sp" />
+
     <TextView
+        android:id="@+id/floating_window_thistime"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/floating_window_thistime"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="20dp"
         android:text="本次锁机时间\n21:48--21:49"
-        android:textColor="@color/white"
         android:textAlignment="center"
+        android:textColor="@color/white"
 
         />
+
     <RelativeLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="125dp"
         android:layout_gravity="center_horizontal"
-        android:textColor="@color/white"
-        >
+        android:layout_marginTop="125dp"
+        android:textColor="@color/white">
+
         <Button
+            android:id="@+id/floating_window_zaoButton"
             android:layout_width="32dp"
             android:layout_height="32dp"
-            android:id="@+id/floating_window_zaoButton"
-            android:background="@drawable/playcircle"
-            android:textColor="@color/white"
-            />
+            android:background="@drawable/lockplay"
+            android:textColor="@color/white" />
 
     </RelativeLayout>
 
