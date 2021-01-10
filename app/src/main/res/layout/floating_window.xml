@@ -60,7 +60,6 @@
             android:layout_height="32dp"
             android:background="@drawable/lockplay"
             android:textColor="@color/white" />
-
     </RelativeLayout>
 
 

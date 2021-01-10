@@ -1,24 +1,179 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context=".shouye_fragment.Data_Main"
-    android:orientation="horizontal"
-    android:background="@drawable/databackground">
-
-    <TextView
+    tools:context=".shouye_fragment.DClock_Main"
+    android:layout_gravity="center_vertical"
+    android:background="@drawable/databackground"
+    >
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textAlignment="center"
-        android:text="数据统计"
-        android:gravity="center_horizontal"
-        android:layout_gravity="center"
-        />
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="test"
-        android:textSize="50dp"
-        android:id="@+id/test_text"/>
+        android:layout_height="70dp"
+        >
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="数据统计"
+            android:textSize="25sp"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:textStyle="bold"
+            android:textColor="@color/tv_Black"
+            />
+
+    </RelativeLayout>
+
+    <TableLayout
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:layout_marginTop="150dp"
+        android:background="@drawable/roundrecwhite"
+        android:shrinkColumns="3"
+        >
+        <TextView
+            android:text="累计锁机"
+            android:textColor="@color/black"
+            android:layout_height="40dp"
+            android:textAlignment="center"
+            android:gravity="center"
+            android:textStyle="bold"/>
+        <TableRow tools:ignore="UselessParent"
+            android:layout_width="match_parent"
+            >
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_height="match_parent"
+                android:layout_width="match_parent"
+                android:layout_weight="1">
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:text="累计次数"
+                    android:gravity="center"
+                    android:textColor="@color/bg_Black"/>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:text="0"
+                    android:gravity="center"
+                    android:id="@+id/lock_phone_cishu"/>
+            </LinearLayout>
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_height="match_parent"
+                android:layout_width="match_parent"
+                android:layout_weight="1"
+                >
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:text="锁机总时长"
+                    android:gravity="center"
+                    android:textColor="@color/bg_Black" />
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:text="0"
+                    android:gravity="center"
+                    android:id="@+id/lock_phone_time"/>
+            </LinearLayout>
+        </TableRow>
+    </TableLayout>
+    <TableLayout
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:layout_marginTop="350dp"
+        android:background="@drawable/roundrecwhite"
+        android:shrinkColumns="3"
+        >
+        <TextView
+            android:text="近期锁机"
+            android:textColor="@color/black"
+            android:layout_height="40dp"
+            android:textAlignment="center"
+            android:gravity="center"
+            android:textStyle="bold"/>
+        <TableRow tools:ignore="UselessParent"
+            android:layout_width="match_parent"
+            >
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_height="match_parent"
+                android:layout_width="match_parent"
+                android:layout_weight="1">
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:text="锁机开始日期"
+                    android:gravity="center"
+                    android:textColor="@color/bg_Black"/>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:text="0"
+                    android:gravity="center"
+                    android:id="@+id/lock_phone_latest_begin"/>
+            </LinearLayout>
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_height="match_parent"
+                android:layout_width="match_parent"
+                android:layout_weight="1"
+                >
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:text="锁计时长"
+                    android:gravity="center"
+                    android:textColor="@color/bg_Black" />
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:text="0"
+                    android:gravity="center"
+                    android:id="@+id/lock_phone_latest_last"/>
+            </LinearLayout>
+        </TableRow>
+    </TableLayout>
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:layout_marginTop="520dp"
+        android:layout_gravity="center_horizontal">
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:src="@drawable/checklist"
+            android:id="@+id/lockfortime"
+            android:layout_centerHorizontal="true"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:text="这里，是你专注的次数和时间\n不妨再试试努力一下吧！"
+            android:textAlignment="center"
+            android:textSize="15sp"
+            android:layout_below="@id/lockfortime"
+            android:textColor="@color/tv_Black"
+            android:layout_marginTop="10dp"
+            />
+
+    </RelativeLayout>
+
+
 </FrameLayout>

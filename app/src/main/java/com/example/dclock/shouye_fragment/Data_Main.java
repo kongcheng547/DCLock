@@ -15,7 +15,7 @@ import com.example.dclock.database.LockPhoneInfoDataBase;
 
 public class Data_Main extends Fragment {
 
-    TextView textView;
+    TextView numberTextView, timeTextView, latestDayTextView, latestTimeTextView;
     LockPhoneInfoDataBase lockPhoneInfoDataBase;
     LockPhoneInfoDao lockPhoneInfoDao;
 
@@ -25,14 +25,27 @@ public class Data_Main extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View rootView = inflater.inflate(R.layout.fragment_data_main, container, false);
-        textView = (TextView) rootView.findViewById(R.id.test_text);
 
         lockPhoneInfoDataBase = LockPhoneInfoDataBase.getLockPhoneInfoDataBase(getContext());
         lockPhoneInfoDao = lockPhoneInfoDataBase.lockPhoneInfoDao();
 
         LockPhoneInfo lockPhoneInfo = lockPhoneInfoDao.getLatestInfo();
 
-        //textView.setText(lockPhoneInfoDao.getInfoNum()+"");
+        numberTextView = (TextView) rootView.findViewById(R.id.lock_phone_cishu);
+        timeTextView = (TextView) rootView.findViewById(R.id.lock_phone_time);
+
+        latestDayTextView = (TextView) rootView.findViewById(R.id.lock_phone_latest_begin);
+        latestTimeTextView = (TextView) rootView.findViewById(R.id.lock_phone_latest_last);
+
+        numberTextView.setText(lockPhoneInfoDao.getInfoNum()+"次");
+        timeTextView.setText(lockPhoneInfoDao.getTotalTime()+"分钟");
+        LockPhoneInfo latestLockPhoneInfo = lockPhoneInfoDao.getLatestInfo();
+
+        if (latestLockPhoneInfo != null){
+            latestDayTextView.setText(latestLockPhoneInfo.getBeginMonth()+"月"+latestLockPhoneInfo.getBeginDay()+"日 "+latestLockPhoneInfo.getBeginHour()+":"+latestLockPhoneInfo.getBeginMinite());
+            latestTimeTextView.setText(latestLockPhoneInfo.getLastingTime()+"分钟");
+        }
+
         return rootView;
     }
 

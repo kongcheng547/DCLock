@@ -227,7 +227,7 @@ public class DClock_Main extends Fragment {
             @Override
             public void onClick(View view) {
                 new AlertDialog.Builder(context).setTitle("帮助")
-                        .setMessage("这是帮助")
+                        .setMessage("点击锁机就会锁定手机哦，请注意使用！")
                         .setPositiveButton("知道了",null)
                         .show();
                 //forStartService.openActivity(getActivity(),1);

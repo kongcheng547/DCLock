@@ -15,7 +15,7 @@ public abstract class LockPhoneInfoDataBase extends RoomDatabase {
         if (lockPhoneInfoDataBase == null){
             synchronized (LockPhoneInfoDataBase.class) {
                 if (lockPhoneInfoDataBase == null) {
-                    lockPhoneInfoDataBase = Room.databaseBuilder(context.getApplicationContext(), LockPhoneInfoDataBase.class, "lock_phone_info_test2_db").allowMainThreadQueries().build();
+                    lockPhoneInfoDataBase = Room.databaseBuilder(context.getApplicationContext(), LockPhoneInfoDataBase.class, "lock_phone_info_db_test5").allowMainThreadQueries().build();
                 }
             }
         }

@@ -20,9 +20,13 @@ import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 
+import com.example.dclock.database.LockPhoneInfo;
+import com.example.dclock.database.LockPhoneInfoDao;
+import com.example.dclock.database.LockPhoneInfoDataBase;
 import com.example.dclock.shouye_fragment.forStartService;
 
 import java.util.Calendar;
@@ -44,14 +48,21 @@ public class LockPhone extends Service {
     private WindowManager.LayoutParams layoutParams;
 
     private Button switchMusicButton;
-    private boolean isPlaying=false;
+    private boolean isPlaying=true;
     private Intent playIntent;
     @SuppressLint("UseCompatLoadingForDrawables")
     public static int background=R.drawable.floatingwindowbackground1;
     public static String saidText="你一定不会平凡";
+    public boolean isStopLock=false;
 
     private Handler handler = new Handler();
     TextView time_now,time_year,window_text,this_time;
+
+    /**
+     * database
+     */
+    LockPhoneInfoDataBase lockPhoneInfoDataBase;
+    LockPhoneInfoDao lockPhoneInfoDao;
 
     private Runnable runnable = new Runnable()
     {
@@ -89,12 +100,14 @@ public class LockPhone extends Service {
         window_text.setText(saidText);
         this_time=view.findViewById(R.id.floating_window_thistime);
         switchMusicButton=view.findViewById(R.id.floating_window_zaoButton);
+
         switchMusicButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 if(!isPlaying)
                 {
                     startService(playIntent);
+                    isStopLock=true;
                     Log.e("开始","播放音乐");
                 }
                 else
@@ -110,7 +123,10 @@ public class LockPhone extends Service {
         windowManager.addView(view,layoutParams);
         playIntent=new Intent(context,MyAudioService.class);
         if(isPlaying)
+        {
             startService(playIntent);
+        }
+
 
     }
 
@@ -126,6 +142,7 @@ public class LockPhone extends Service {
         Log.e("进入服务3", "进入服务3");
         handler.post(runnable);
         lockTime=intent.getIntExtra("lockTime",1);
+        stroageData();
         return super.onStartCommand(intent, flags, startId);
     }
 
@@ -165,6 +182,39 @@ public class LockPhone extends Service {
             this_time.setText(nextTimeString);
             nextTimeIsSet=true;
         }
+    }
+    public void stroageData()
+    {
+        Calendar calendar = Calendar.getInstance();
+        // 获取年,月，日；
+        String year = calendar.get(Calendar.YEAR) + "";
+        int month = calendar.get((Calendar.MONTH)) + 1;
+        String day = calendar.get(Calendar.DAY_OF_MONTH) + "";
+        int mWay = calendar.get(Calendar.DAY_OF_WEEK)-1;
+        String yearString = year + "/" + (month) + "/" + day + "  星期"+CN_CHARS[mWay];
+        time_year.setText(yearString);
+        //database
+        lockPhoneInfoDataBase = LockPhoneInfoDataBase.getLockPhoneInfoDataBase(this);
+        lockPhoneInfoDao = lockPhoneInfoDataBase.lockPhoneInfoDao();
+
+        // 获取系统时间
+        int hour = calendar.get(Calendar.HOUR_OF_DAY);
+        int minute = calendar.get(Calendar.MINUTE);
+        int miao = calendar.get(Calendar.SECOND);
+        int nextMin,nextH,allTime;
+        allTime=minute+lockTime;
+        nextMin=allTime%60;
+        nextH=hour+allTime/60;
+        Log.e("put in database", lockTime+"");
+        lockPhoneInfoDao.insertInfo(new LockPhoneInfo(month, Integer.parseInt(day), hour, minute, lockTime));
+//        @SuppressLint("DefaultLocale") String timeString = String.format("%02d:%02d", hour, minute);
+//        @SuppressLint("DefaultLocale") String nextTimeString = String.format("本次锁机时间\n%02d:%02d--%02d:%02d", hour, minute, nextH,nextMin);
+//        time_now.setText(timeString);
+//        if(!nextTimeIsSet)
+//        {
+//            this_time.setText(nextTimeString);
+//            nextTimeIsSet=true;
+//        }
     }
 
 }

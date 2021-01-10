@@ -23,6 +23,7 @@ import static java.lang.Thread.sleep;
 public class forStartService extends Activity {
     public int lockTime;
     public Intent intentlock;
+    public static boolean isLock=false;
     Handler handler=new Handler();
     Runnable runnable=new Runnable(){
         @SuppressLint("ShowToast")
@@ -60,6 +61,7 @@ public class forStartService extends Activity {
                 Toast.makeText(this, "当前无权限，请授权", Toast.LENGTH_SHORT);
                 Log.e("测试流程3", "测试流程3");
                 startActivityForResult(new Intent(Settings.ACTION_MANAGE_OVERLAY_PERMISSION, Uri.parse("package:" + getPackageName())), 0);
+                handler.postDelayed(runnable,lockTime*60*1000);
             } else {
                 Log.e("测试流程4", "测试流程4");
                 startService(intentlock);
@@ -92,5 +94,10 @@ public class forStartService extends Activity {
         Intent intent = new Intent(context, forStartService.class);
         intent.putExtra("lockTime", time);
         context.startActivity(intent);
+    }
+    public void stopLock(){
+        stopService(intentlock);
+        finish();
+        Toast.makeText(this,"提前结束锁机",Toast.LENGTH_LONG);
     }
 }

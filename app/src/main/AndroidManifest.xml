@@ -30,7 +30,10 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </service>
+        <service android:name=".alarmclass.AlarmService"/>
+        <service android:name=".MyAlarmAudioService"/>
         <activity android:name=".shouye_fragment.forStartService"/>
+        <activity android:name=".shouye_fragment.ForStartAlarmService"/>
     </application>
 
 </manifest>

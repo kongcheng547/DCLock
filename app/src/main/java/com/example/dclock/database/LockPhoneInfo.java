@@ -2,6 +2,7 @@ package com.example.dclock.database;
 
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
+import androidx.room.Ignore;
 import androidx.room.PrimaryKey;
 
 import com.example.dclock.LockPhone;
@@ -37,6 +38,7 @@ public class LockPhoneInfo {
         this.lastingTime = lastingTime;
     }
 
+    @Ignore
     public LockPhoneInfo(){}
 
     public int getId() {

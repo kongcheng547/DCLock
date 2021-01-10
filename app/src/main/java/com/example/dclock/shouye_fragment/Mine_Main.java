@@ -17,13 +17,16 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.dclock.MyAlarmAudioService;
+import com.example.dclock.alarmclass.AlarmService;
+
 import androidx.fragment.app.Fragment;
 
 import com.example.dclock.LockPhone;
 import com.example.dclock.R;
 
 public class Mine_Main extends Fragment {
-    public Button changeInfo,changeBackground,changeSaid,help_mine;
+    public Button changeInfo,changeBackground,changeSaid,help_mine,changeClickTime,changeMusic;
     public ImageButton headImg;
     public Context context;
     public TextView nicheng;
@@ -41,6 +44,8 @@ public class Mine_Main extends Fragment {
         help_mine=rootView.findViewById(R.id.mine_help);
         headImg=rootView.findViewById(R.id.headImg);
         nicheng=rootView.findViewById(R.id.nicheng);
+        changeClickTime=rootView.findViewById(R.id.changeClickTime);
+        changeMusic = rootView.findViewById(R.id.alarm_music_change);
         context=this.getContext();
         initBtns();
         return rootView;
@@ -160,19 +165,75 @@ public class Mine_Main extends Fragment {
                 showDialog.show();
             }
         });
+        changeClickTime.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    EditText numberChoose;//这个view不能是全局的，应该是在用的时候再创建，否则会出现错误
+                    numberChoose=new EditText(context);
+                    numberChoose.setInputType(InputType.TYPE_CLASS_NUMBER);
+                    AlertDialog.Builder showDialog = new AlertDialog.Builder(context);
+                    showDialog.setTitle("输入闹钟关闭次数");
+                    //numberChoose=(EditText)getLayoutInflater().inflate(numberChoose,null);
+                    showDialog.setView(numberChoose);
+                    showDialog.setPositiveButton("确定", new DialogInterface.OnClickListener() {
+                        @SuppressLint("ShowToast")
+                        @Override
+                        public void onClick(DialogInterface dialogInterface, int i) {
+                            int inputTime= Integer.parseInt(numberChoose.getText().toString());
+                            if(inputTime<10){
+                                Toast.makeText(context,"请输入大于十次的数目以方便您被叫醒",Toast.LENGTH_LONG).show();
+                            }
+                            else {
+                                AlarmService.myClickTime=inputTime;
+                                Toast.makeText(context,"您的闹钟需要您点击"+inputTime+"次后才可以关闭",Toast.LENGTH_LONG).show();
+                            }
+                        }
+                    });
+                    showDialog.setNegativeButton("取消", null);
+                    showDialog.show();
+
+                }
+            });
+        changeMusic.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                final String[] items = {"Toby Fox - ASGORE", "美波 - カワキヲアメク", "HyperGryph - 生命流"};
+                //String musicChoose;
+                AlertDialog.Builder alertBuilder = new AlertDialog.Builder(context);
+                alertBuilder.setTitle("选择闹钟铃声");
+                alertBuilder.setSingleChoiceItems(items, 0, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        //Toast.makeText(context, items[i], Toast.LENGTH_SHORT).show();
+                        switch (i)
+                        {
+                            case 0:MyAlarmAudioService.alarmMusicChoose=R.raw.asgore;break;
+                            case 1:MyAlarmAudioService.alarmMusicChoose=R.raw.meibo;break;
+                            case 2:
+                                MyAlarmAudioService.alarmMusicChoose=R.raw.shengmingliu;break;
+                        }
+                    }
+                });
+                alertBuilder.setPositiveButton("确定", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        //alertDialog2.dismiss();
+
+                    }
+                });
+                alertBuilder.setNegativeButton("取消", null);
+                AlertDialog alertDialog2 = alertBuilder.create();
+                alertDialog2.show();
+
+            }
+        });
         help_mine.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //EditText nichengChoose;//这个view不能是全局的，应该是在用的时候再创建，否则会出现错误
-                TextView textView=new TextView(context);
-
-                AlertDialog.Builder showDialog = new AlertDialog.Builder(context);
-                showDialog.setTitle("输入昵称");
-                //nichengChoose=(EditText)getLayoutInflater().inflate(nichengChoose,null);
-                textView.setText("这是帮助！");
-                showDialog.setView(textView);
-                showDialog.setNegativeButton("知道了", null);
-                showDialog.show();
+                new AlertDialog.Builder(context).setTitle("帮助")
+                        .setMessage("点击修改起床难度，会修改闹钟响起之后您需要点击按钮以关闭闹钟的次数，我们的闹钟会四处走动，防止您闭着眼睛按按钮，从而叫醒您！")
+                        .setPositiveButton("知道了",null)
+                        .show();
             }
         });
         headImg.setOnClickListener(new View.OnClickListener() {

@@ -10,8 +10,7 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="70dp"
-        android:background="@color/gainsboro"
-        >
+        android:background="@color/beige">
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -24,15 +23,26 @@
             />
     </RelativeLayout>
 
-    <ListView
-        android:id="@+id/alarm_list_view"
-        android:layout_width="match_parent"
-        android:layout_height="467dp" />
-
-    <Button
-        android:layout_width="match_parent"
+    <FrameLayout
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="bottom"
-        android:text="添加闹钟"
-        android:id="@+id/add_alarm_button"/>
+        android:background="@drawable/alarmbackground">
+        <ListView
+            android:id="@+id/alarm_list_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp">
+        </ListView>
+
+        <ImageButton
+            android:id="@+id/add_alarm_button"
+            android:layout_width="60dp"
+            android:layout_height="57dp"
+            android:layout_gravity="right"
+            android:layout_marginTop="500dp"
+            android:background="#00000000"
+            android:src="@drawable/button_add" />
+
+    </FrameLayout>
+
 </LinearLayout>

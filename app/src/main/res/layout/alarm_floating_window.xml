@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:background="@drawable/alarm_background"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="120dp"
+        android:text="现在是"
+        android:textSize="30dp"
+        android:gravity="center"
+        android:layout_gravity="center"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="35dp"
+        android:text="x月x日 星期x"
+        android:textSize="25dp"
+        android:layout_gravity="center"
+        android:id="@+id/date_text_in_alarm_floating"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="00:00"
+        android:layout_marginTop="5dp"
+        android:textSize="50dp"
+        android:gravity="center"
+        android:textStyle="bold"
+        android:layout_gravity="center"
+        android:id="@+id/time_text_in_alarm_floating"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="100dp"
+        android:text="您设定的时间到了\n如想关闭闹钟\n请单击按钮10次"
+        android:textSize="20dp"
+        android:id="@+id/alarm_click_time"
+        android:gravity="center"
+        android:layout_gravity="center"/>
+
+<!--    <TextView-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginTop="20dp"-->
+<!--        android:text="input String"-->
+<!--        android:textSize="20dp"-->
+<!--        android:gravity="center"-->
+<!--        android:layout_gravity="center"-->
+<!--        android:id="@+id/need_string_text"/>-->
+
+<!--    <EditText-->
+<!--        android:layout_width="350dp"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginTop="50dp"-->
+<!--        android:longClickable="false"-->
+<!--        android:layout_gravity="center"-->
+<!--        android:id="@+id/input_string_text"/>-->
+
+    <Button
+        android:layout_width="180dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="25dp"
+        android:text="关闭闹钟"
+        android:textSize="20dp"
+        android:textColor="@color/bg_Gray_light"
+        android:textStyle="italic"
+        android:background="@drawable/greenroundrec"
+        android:id="@+id/subscribe_button"/>
+
+</LinearLayout>

@@ -32,7 +32,7 @@ public class AlarmAdapter extends ArrayAdapter<Alarm> {
         Alarm alarm = getItem(position);
         View view = LayoutInflater.from(getContext()).inflate(resourceId, parent, false);
         TextView alarmTime = (TextView) view.findViewById(R.id.alarm_time_text);
-        alarmTime.setText(alarm.getAlarmHour() + ":" + alarm.getAlarmMinite());
+        alarmTime.setText(String.format("%02d:%02d",alarm.getAlarmHour(),alarm.getAlarmMinite()));
 
         return view;
     }
